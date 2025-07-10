@@ -35,30 +35,22 @@ export const getAllProducts = async (token: string) => {
   return response.data;
 };
 
-export const deleteProduct = async (id: string, token: string) => {
-  const response = await axios.delete(`${process.env.API_URL}/api/products/${id}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  return response.data;
-};
-
-export const restoreProduct = async (id: string, token: string) => {
-  // This would require a backend endpoint to restore a soft-deleted product
-  const response = await axios.patch(`${process.env.API_URL}/api/products/${id}/restore`, {}, {
+export const deleteProduct = async (id: string, token: string) =>  {
+  const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/products/${id}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;
 };
 
 export const createProduct = async (data: any, token: string) => {
-    const response = await axios.post(`${process.env.API_URL}/api/products`, data, {
+    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/products`, data, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;
 };
 
 export const updateProduct = async (id: string, data: any, token: string) => {
-  const response = await axios.put(`${process.env.API_URL}/api/products/${id}`, data, {
+  const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/products/${id}`, data, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;
