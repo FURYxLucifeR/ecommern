@@ -8,7 +8,7 @@ export const registerUser = async (data: {
   password: string;
   address: string;
 }) => {
-  console.log
+  // console.log
   const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/register`, data);
   return response.data;
 };
