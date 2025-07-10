@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = "http://localhost:5000/api/auth";
+// const API_URL = "http://localhost:5000/api/auth";
 
 export const registerUser = async (data: {
   name: string;
@@ -8,7 +8,8 @@ export const registerUser = async (data: {
   password: string;
   address: string;
 }) => {
-  const response = await axios.post(`${API_URL}/register`, data);
+  console.log
+  const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/register`, data);
   return response.data;
 };
 
@@ -16,26 +17,26 @@ export const loginUser = async (data: {
   email: string;
   password: string;
 }) => {
-  const response = await axios.post(`${API_URL}/login`, data);
+  const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, data);
   return response.data;
 };
 
 export const getProfile = async (token: string) => {
-  const response = await axios.get('http://localhost:5000/api/user/profile', {
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/profile`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;
 };
 
 export const updateProfile = async (data: { name: string; address: string }, token: string) => {
-  const response = await axios.put('http://localhost:5000/api/user/profile', data, {
+  const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/user/profile`, data, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;
 };
 
 export const getTotalExpenses = async (token: string) => {
-  const response = await axios.get('http://localhost:5000/api/user/expenses', {
+  const response = await axios.get(`${process.env.API_URL}/api/user/expenses`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;

@@ -31,7 +31,7 @@ const Register: React.FC = () => {
       setFormError(error.response?.data?.message || 'Registration failed');
     },
   });
-
+console.log("mutation",mutation)
   return (
     <Paper elevation={3} sx={{ p: 4, maxWidth: 400, mx: 'auto', mt: 6 }}>
       <Typography variant="h5" align="center" gutterBottom>

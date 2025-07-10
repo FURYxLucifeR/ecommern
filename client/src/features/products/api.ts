@@ -19,6 +19,6 @@ export const fetchProducts = async (params: ProductFilterParams = {}) => {
   if (params.rating !== undefined) query.append('rating', String(params.rating));
   if (params.sortBy) query.append('sortBy', params.sortBy);
   if (params.sortOrder) query.append('sortOrder', params.sortOrder);
-  const response = await axios.get(`http://localhost:5000/api/products?${query.toString()}`);
+  const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/products?${query.toString()}`);
   return response.data;
 }; 
